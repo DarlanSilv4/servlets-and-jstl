@@ -19,7 +19,15 @@
 			<c:forEach var="contact" items="${dao.list}">
 				<tr>
 					<td>${contact.name}</td>
-					<td>${contact.email}</td>
+					<td>
+						<c:if test="${not empty contact.email}">
+							<a href="mailto:${contact.email}">${contact.email}</a>
+						</c:if>
+						
+						<c:if test="${empty contact.email}">
+							Email not informed
+						</c:if>
+					</td>
 					<td>${contact.address}</td>
 					<td>${contact.birthday.time}</td>
 				</tr>
